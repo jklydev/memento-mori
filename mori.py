@@ -8,14 +8,22 @@ def mori():
   if request.method == 'POST':
     sex = request.form['sex']
     age = request.form['age']
-    return redirect(url_for('results', sex=sex, age=age))
+    M, F = make_table("tables/2012.csv")
+    if sex == 'f':
+        t = F[age]
+    else:
+        t = M[age]
+    q = t['q']
+    d = t['d']
+    e = t['e']
+    return redirect(url_for('results', sex=sex, age=age, q=q, d=d, e=e))
     
   return render_template('main.html')
 
 @app.route("/results")
-@app.route("/results/<sex>/<age>/")
-def results(sex=None, age=None):
-  return render_template('results.html', sex=sex, age=age)
+@app.route("/results/<sex>/<age>/<q>/<d>/<e>/")
+def results(sex=None, age=None, q=None, d=None, e=None):
+  return render_template('results.html', sex=sex, age=age, q=q, d=d, e=e)
 
 
 def make_table(path):
