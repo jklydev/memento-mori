@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from numpy import genfromtxt
-import unittest
 app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -16,14 +15,15 @@ def mori():
     q = t['q']
     d = t['d']
     e = t['e']
-    return redirect(url_for('results', sex=sex, age=age, q=q, d=d, e=e))
+    data = jsonify(age=age,sex=sex,q=q,d=d,e=e)
+    return redirect(url_for('results', data=data))
     
   return render_template('main.html')
 
 @app.route("/results")
-@app.route("/results/<sex>/<age>/<q>/<d>/<e>/")
-def results(sex=None, age=None, q=None, d=None, e=None):
-  return render_template('results.html', sex=sex, age=age, q=q, d=d, e=e)
+@app.route("/results/<data>")
+def results(data=None):
+  return render_template('results.html', data)
 
 
 def make_table(path):
