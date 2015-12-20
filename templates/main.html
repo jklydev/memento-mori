@@ -6,7 +6,8 @@
 <form action="{{ url_for('mori') }}" method="post">
   <dl>
     <dt>Sex:
-      <dd><input type="text" name="sex">
+      <dd><input type="radio" name="sex" value="m">Male
+      <dd><input type="radio" name="sex" value="f">Female
     <dt>Age:
       <dd><input type="number" name="age">
     <dd><input type="submit" value="enter">
