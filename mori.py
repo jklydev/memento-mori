@@ -18,7 +18,7 @@ M, F = make_table("tables/2012.csv")
 def mori():
   if request.method == 'POST':
     sex = request.form['sex']
-    age = request.form['age']
+    age = int(request.form['age'])
     if sex == 'f':
         t = F[age]
     else:
@@ -27,6 +27,9 @@ def mori():
     d = t['d']
     e = t['e']
     data = jsonify(age=age,sex=sex,q=q,d=d,e=e)
+    print '^^^^^^^^^^^^^^'
+    print data
+    print '^^^^^^^^^^^^^^'
     return redirect(url_for('results', data=data))
 
   return render_template('main.html')

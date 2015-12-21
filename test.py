@@ -33,6 +33,13 @@ class MoriTest(unittest.TestCase):
         results = self.app.get("/results/{'age':27}")
         self.assertTrue('27' in results.data)
 
+    def testHomePost(self):
+        home = self.app.post('/', data=dict(
+            sex='f',
+            age='27'), follow_redirects=True)
+        self.assertFalse('Error' in home.data)
+        self.assertTrue('27' in home.data)
+
     def testAbout(self):
         about = self.app.get('/about')
         self.assertTrue('About' in about.data)
