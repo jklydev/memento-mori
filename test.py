@@ -25,9 +25,17 @@ class MoriTest(unittest.TestCase):
         home = self.app.get('/')
         self.assertTrue('Male' in home.data)
 
-    def testResults(self):
+    def testResultsNone(self):
         results = self.app.get('/results')
         self.assertTrue('Data' in results.data)
+
+    def testResultsData(self):
+        results = self.app.get("/results/{'age':27}")
+        self.assertTrue('27' in results.data)
+
+    def testAbout(self):
+        about = self.app.get('/about')
+        self.assertTrue('About' in about.data)
 
 if __name__ == '__main__':
     unittest.main()
