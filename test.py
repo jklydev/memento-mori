@@ -27,10 +27,10 @@ class MoriTest(unittest.TestCase):
 
     def testResultsNone(self):
         results = self.app.get('/results')
-        self.assertTrue('Data' in results.data)
+        self.assertTrue('Male' in results.data)
 
     def testResultsData(self):
-        results = self.app.get("/results/{'age':27}")
+        results = self.app.get("/results/{'x':27, 's':'m', 'q':0.2, 'd':0.8, 'e':23}")
         self.assertTrue('27' in results.data)
 
     def testHomePost(self):
@@ -39,6 +39,7 @@ class MoriTest(unittest.TestCase):
             age='27'), follow_redirects=True)
         self.assertFalse('Error' in home.data)
         self.assertTrue('27' in home.data)
+        self.assertTrue('56' in home.data)
 
     def testAbout(self):
         about = self.app.get('/about')

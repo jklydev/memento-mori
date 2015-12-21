@@ -8,8 +8,8 @@ def make_table(path):
     F = {}
     for row in csv:
         x = row[0]
-        M[x] = { 'q': row[2], 'd': row[4], 'e': row[5] }
-        F[x] = { 'q': row[8], 'd': row[10], 'e': row[11] }
+        M[x] = { 's': 'm', 'x': x, 'q': row[2], 'd': row[4], 'e': row[5] }
+        F[x] = { 's': 'f', 'x': x, 'q': row[8], 'd': row[10], 'e': row[11] }
     return M, F
 
 M, F = make_table("tables/2012.csv")
@@ -19,17 +19,12 @@ def mori():
   if request.method == 'POST':
     sex = request.form['sex']
     age = int(request.form['age'])
+    #move this to results function
     if sex == 'f':
         t = F[age]
     else:
         t = M[age]
-    q = t['q']
-    d = t['d']
-    e = t['e']
-    data = jsonify(age=age,sex=sex,q=q,d=d,e=e)
-    print '^^^^^^^^^^^^^^'
-    print data
-    print '^^^^^^^^^^^^^^'
+    data = t
     return redirect(url_for('results', data=data))
 
   return render_template('main.html')
@@ -38,7 +33,16 @@ def mori():
 @app.route("/results")
 @app.route("/results/<data>")
 def results(data=None):
-    return render_template('results.html', data=data)
+    if data is not None:
+        print 'hello'
+        t = eval(data)
+        age = t['x']
+        sex = t['s']
+        d = t['d']
+        q = t['q']
+        e = t['e']
+        return render_template('results.html', age=age, sex=sex, q=q, d=d, e=e)
+    return redirect(url_for('/'))
 
 
 @app.route("/about")
