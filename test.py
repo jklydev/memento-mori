@@ -30,7 +30,7 @@ class MoriTest(unittest.TestCase):
         self.assertTrue('Male' in results.data)
 
     def testResultsData(self):
-        results = self.app.get("/results/{'x':27, 's':'m', 'q':0.2, 'd':0.8, 'e':23}")
+        results = self.app.get("/results/f/27")
         self.assertTrue('27' in results.data)
 
     def testHomePost(self):

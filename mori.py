@@ -12,36 +12,32 @@ def make_table(path):
         F[x] = { 's': 'f', 'x': x, 'q': row[8], 'd': row[10], 'e': row[11] }
     return M, F
 
+def get_table(sex, age):
+    if sex == 'f':
+        t = F[age]
+    else:
+        t = M[age]
+    return t
+
 M, F = make_table("tables/2012.csv")
 
 @app.route("/", methods=['GET', 'POST'])
 def mori():
   if request.method == 'POST':
     sex = request.form['sex']
-    age = int(request.form['age'])
-    #move this to results function
-    if sex == 'f':
-        t = F[age]
-    else:
-        t = M[age]
-    data = t
-    return redirect(url_for('results', data=data))
+    age = request.form['age']
+    return redirect(url_for('results', sex=sex, age=age))
 
   return render_template('main.html')
 
 
 @app.route("/results")
-@app.route("/results/<data>")
-def results(data=None):
-    if data is not None:
-        print 'hello'
-        t = eval(data)
-        age = t['x']
-        sex = t['s']
-        d = t['d']
-        q = t['q']
-        e = t['e']
-        return render_template('results.html', age=age, sex=sex, q=q, d=d, e=e)
+@app.route("/results/<sex>/<age>")
+def results(sex=None, age=None):
+    if (age is not None and sex is not None):
+        t = get_table(sex, int(age))
+        print t
+        return render_template('results.html', age=age, sex=sex, q=t['q'], d=['d'], e=['e'])
     return redirect(url_for('/'))
 
 
