@@ -27,6 +27,7 @@ class MoriTest(unittest.TestCase):
 
     def testResultsNone(self):
         results = self.app.get('/results')
+        self.assertFalse('Error' in results.data)
         self.assertTrue('Male' in results.data)
 
     def testResultsData(self):

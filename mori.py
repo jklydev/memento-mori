@@ -34,11 +34,11 @@ def mori():
 @app.route("/results")
 @app.route("/results/<sex>/<age>")
 def results(sex=None, age=None):
-    if (age is not None and sex is not None):
+    try:
         t = get_table(sex, int(age))
-        print t
-        return render_template('results.html', age=age, sex=sex, q=t['q'], d=['d'], e=['e'])
-    return redirect(url_for('/'))
+    except ValueError:
+        return redirect(url_for('/'))
+    return render_template('results.html', age=age, sex=sex, q=t['q'], d=t['d'], e=t['e'])
 
 
 @app.route("/about")
