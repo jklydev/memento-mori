@@ -36,8 +36,8 @@ def mori():
 def results(sex=None, age=None):
     try:
         t = get_table(sex, int(age))
-    except ValueError:
-        return redirect(url_for('/'))
+    except:
+        return redirect(url_for('mori'))
     return render_template('results.html', age=age, sex=sex, q=t['q'], d=t['d'], e=t['e'])
 
 

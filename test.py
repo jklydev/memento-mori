@@ -26,7 +26,7 @@ class MoriTest(unittest.TestCase):
         self.assertTrue('Male' in home.data)
 
     def testResultsNone(self):
-        results = self.app.get('/results')
+        results = self.app.get('/results', follow_redirects=True)
         self.assertFalse('Error' in results.data)
         self.assertTrue('Male' in results.data)
 
