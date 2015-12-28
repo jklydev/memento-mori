@@ -15,7 +15,7 @@ class TableTest(unittest.TestCase):
         self.assertEqual(self.M[100]['d'], 378.2)
 
     def testFe(self):
-        self.assertEqual(self.F[100]['e'], 2.27)
+        self.assertEqual(self.F[100]['e'], 2)
 
 class MoriTest(unittest.TestCase):
     def setUp(self):
