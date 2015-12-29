@@ -15,7 +15,7 @@ class TableTest(unittest.TestCase):
         self.assertEqual(self.M[100]['d'], 378.2)
 
     def testFe(self):
-        self.assertEqual(self.F[100]['e'], 2)
+        self.assertEqual(self.F[100]['e'], 2.27)
 
 class MoriTest(unittest.TestCase):
     def setUp(self):
@@ -32,15 +32,14 @@ class MoriTest(unittest.TestCase):
 
     def testResultsData(self):
         results = self.app.get("/results/f/27")
-        self.assertTrue('27' in results.data)
+        self.assertTrue('32%' in results.data)
 
     def testHomePost(self):
         home = self.app.post('/', data=dict(
             sex='f',
             age='27'), follow_redirects=True)
         self.assertFalse('Error' in home.data)
-        self.assertTrue('27' in home.data)
-        self.assertTrue('56' in home.data)
+        self.assertTrue('32%' in home.data)
 
     def testAbout(self):
         about = self.app.get('/about')

@@ -8,8 +8,8 @@ def make_table(path):
     F = {}
     for row in csv:
         x = row[0]
-        M[x] = { 's': 'm', 'x': x, 'q': row[2], 'd': row[4], 'e': rint(row[5]) }
-        F[x] = { 's': 'f', 'x': x, 'q': row[8], 'd': row[10], 'e': rint(row[11]) }
+        M[x] = { 's': 'm', 'x': x, 'q': row[2], 'd': row[4], 'e': row[5] }
+        F[x] = { 's': 'f', 'x': x, 'q': row[8], 'd': row[10], 'e': row[11] }
     return M, F
 
 def get_table(sex, age):
@@ -38,7 +38,13 @@ def results(sex=None, age=None):
         t = get_table(sex, int(age))
     except:
         return redirect(url_for('mori'))
-    return render_template('results.html', age=age, sex=sex, q=t['q'], d=t['d'], e=t['e'], life=(int(age) + t['e']))
+    age=int(age)
+    sex=sex
+    expected=t['e']
+    life=(age + expected)
+    lived = int(100*(age/life))
+    mort = t['q']*100
+    return render_template('results.html', age=age, sex=sex, lived=lived, mort=mort)
 
 
 @app.route("/about")
