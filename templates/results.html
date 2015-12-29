@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Memento Mori</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -10,6 +11,9 @@
 mort }}% chance you will die this year. </p>
 </section>
 
+<div class=meter>
+  <span style="width: {{ lived }}%"></span>
+<div>
 
 </body>
 
