@@ -1,20 +1,12 @@
-<!doctype html>
-<html>
-<head>
-<title>Memento Mori</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-</head>
+{% extends "layout.html" %}
 
-<body>
-<section id=text>
-<p>You have lived around {{ lived }}% of your life and there is a {{
-mort }}% chance you will die this year. </p>
-</section>
+{% block content %}
+<div id=text>
+  <p>You have lived around {{ lived }}% of your life and there is a {{
+  mort }}% chance you will die this year. </p>
+</divn>
 
 <div class=meter>
   <span style="width: {{ lived }}%"></span>
-<div>
-
-</body>
-
-</html>
+</div>
+{% endblock % }
