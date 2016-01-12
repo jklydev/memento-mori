@@ -32,6 +32,7 @@ class MoriTest(unittest.TestCase):
 
     def testResultsData(self):
         results = self.app.get("/results/f/27")
+        self.assertFalse('Error' in results.data)
         self.assertTrue('32%' in results.data)
 
     def testHomePost(self):

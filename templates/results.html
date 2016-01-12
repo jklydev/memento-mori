@@ -1,12 +1,11 @@
 {% extends "layout.html" %}
-
 {% block content %}
-<div id=text>
-  <p>You have lived around {{ lived }}% of your life and there is a {{
-  mort }}% chance you will die this year. </p>
-</divn>
-
-<div class=meter>
-  <span style="width: {{ lived }}%"></span>
-</div>
-{% endblock % }
+  <div id=text>
+    <p>You have lived around {{ lived }}% of your life and there is a {{
+     mort }}% chance you will die this year. </p>
+  </div>
+  
+  <div class=meter>
+    <span style="width: {{ lived }}%"></span>
+  </div>
+{% endblock %}
