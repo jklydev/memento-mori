@@ -1,3 +1,6 @@
+header { background: black; height: 100px; margin: 0px; }
+header > .title { font-size: 4em; font: impact; color: white; text-align: center; }
+
 .meter {
     height: 20px;
     position: relative;
