@@ -1,11 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
   <div id=text>
-    <p>You have lived around {{ lived }}% of your life and there is a {{
-     mort }}% chance you will die this year. </p>
+    <p>You have probably lived about {{ lived }}% of you life. Are you satisfied with what you've done so far?</p>
   </div>
-  
+
   <div class=meter>
     <span style="width: {{ lived }}%"></span>
+  </div>
+
+  <div id=text2>
+    <p>Most people of your sex who make it this far eventually make it to around {{ life }} so you have {{ expected }} years left. </p>
+    <p>But remember that this is only the most likely scenario, and death can come any time. </p>
+    <p>For you this is a {{ mort }}% chance that it will come this year. </p>
   </div>
 {% endblock %}

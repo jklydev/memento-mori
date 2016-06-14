@@ -44,7 +44,7 @@ def results(sex=None, age=None):
     life=(age + expected)
     lived = int(100*(age/life))
     mort = t['q']*100
-    return render_template('results.html', age=age, sex=sex, lived=lived, mort=mort)
+    return render_template('results.html', age=age, sex=sex, lived=lived, mort=mort, life=life, expected=expected)
 
 
 @app.route("/about")
@@ -54,4 +54,3 @@ def about():
 
 if __name__ == "__main__":
   app.run()
-

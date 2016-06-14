@@ -1,5 +1,5 @@
-header { background: black; height: 100px; margin: 0px; }
-header > .title { font-size: 4em; font: impact; color: white; text-align: center; }
+header { height: 100px; margin: 0px; padding: 0; }
+header > .title { font-size: 4em; font: impact; color: black; text-align: center; }
 
 .meter {
     height: 20px;
@@ -25,7 +25,7 @@ header > .title { font-size: 4em; font: impact; color: white; text-align: center
 			      rgb(43,194,83) 37%,
 			      rgb(84,240,84) 69%
 			  );
-    box-shadow: 
+    box-shadow:
     inset 0 2px 9px  rgba(255,255,255,0.3),
     inset 0 -2px 6px rgba(0,0,0,0.4);
     position: relative;
