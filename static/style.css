@@ -1,5 +1,20 @@
-header { height: 100px; margin: 0px; padding: 0; }
-header > .title { font-size: 4em; font: impact; color: black; text-align: center; }
+header {
+    height: 100px;
+    margin: 0px;
+    padding: 0;
+}
+
+header > .title {
+    font-size: 4em;
+    font: impact;
+    text-align: center;
+}
+
+#content {
+    font-size: 1em;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
 
 .meter {
     height: 20px;

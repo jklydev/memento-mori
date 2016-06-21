@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from numpy import genfromtxt, rint
+from numpy import genfromtxt
 app = Flask(__name__)
 
 def make_table(path):
@@ -40,8 +40,8 @@ def results(sex=None, age=None):
         return redirect(url_for('mori'))
     age=int(age)
     sex=sex
-    expected=t['e']
-    life=(age + expected)
+    expected= int(t['e'])
+    life= int((age + expected))
     lived = int(100*(age/life))
     mort = t['q']*100
     return render_template('results.html', age=age, sex=sex, lived=lived, mort=mort, life=life, expected=expected)
